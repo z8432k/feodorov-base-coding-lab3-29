@@ -23,11 +23,13 @@ make
 $ ./bin/pack 27 1 255
 Pack.
 
-Task ident      :27
+Task identifier :27
 Activity flag   :1
 Segment length  :255
 
-Encoded data    :DAFF
+Encoded data HEX  :DAFF
+Encoded data BIN  :1101101011111111
+
 ```
 
 ### Распаковка данных
@@ -36,9 +38,11 @@ Encoded data    :DAFF
 ./bin/unpack DAFF
 Unpack.
 
-Encoded data    :DAFF
+Encoded data HEX  :DAFF
+Encoded data BIN  :1101101011111111
 
-Task ident      :27
+Task identifier :27
 Activity flag   :1
 Segment length  :255
+
 ```

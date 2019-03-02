@@ -85,7 +85,7 @@ void printEncodedData(const unsigned short box) {
   printf("Encoded data HEX\t:%X\n", box);
 
   char *binStr = boxToBinString(box);
-  printf("Encoded data BIN\t:%s\n", binStr);
+  printf("Encoded data BIN\t:%s\n\n", binStr);
 
   free(binStr);
 }

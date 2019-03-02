@@ -11,7 +11,7 @@ static char* boxToBinString(unsigned short box) {
 
   binStr += BIN_STR_DIGITS;
 
-  while (binStr >= binStrStart && box) {
+  do {
     binStr--;
 
     if (box & 1) {
@@ -22,7 +22,7 @@ static char* boxToBinString(unsigned short box) {
     }
 
     box >>= 1;
-  }
+  } while (binStr > binStrStart);
 
   return binStr;
 }

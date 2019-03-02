@@ -10,7 +10,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/bin/pack",
       "args": [
-        "27",
+        "0",
         "1",
         "255"
       ],

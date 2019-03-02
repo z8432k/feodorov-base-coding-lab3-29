@@ -1,18 +1,19 @@
-#define CHANNEL_NUMBER_SIZE 2
-#define SIGNAL_FORM_SIZE 2
-#define DIVISION_RATIO_SIZE 12
+#define TASK_IDENT_SIZE 5
+#define ACTIVITY_FLAG_SIZE 1
+#define SEGMENT_LENGTH_SIZE 8
 
-#define CHANNEL_NUMBER_MASK 0x3
-#define SIGNAL_FORM_MASK 0x3
-#define DIVISION_RATIO_MASK 0xFFF
+#define TASK_IDENT_MASK 0x1F
+#define ACTIVITY_FLAG_MASK 0x1
+#define SEGMENT_LENGTH_MASK 0xFF
 
 typedef struct Data {
-  unsigned short channelNumber;
-  unsigned short signalForm;
-  unsigned short divisionRatio;
+  unsigned short taskIdent;
+  unsigned short activityFlag;
+  unsigned short segmentLength;
 } Data_t;
 
 Data_t* newData(void);
+void fillData(Data_t *data, const char **argv);
 unsigned short packData(const Data_t* data);
 Data_t* unpackData(const unsigned short);
 void printData(const Data_t* data);

@@ -1,1 +1,1 @@
-void __error(const char* const msg);
+void eprintf(const char* msg);

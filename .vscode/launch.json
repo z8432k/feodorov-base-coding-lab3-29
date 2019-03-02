@@ -8,11 +8,11 @@
       "name": "(gdb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/bin/unpack",
+      "program": "${workspaceFolder}/bin/pack",
       "args": [
-        "6003",
-        //"3",
-        //"888"
+        "27",
+        "1",
+        "255"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

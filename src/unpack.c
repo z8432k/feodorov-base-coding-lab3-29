@@ -9,7 +9,7 @@ int main(const int argc, const char **argv) {
   printf("Unpack.\n\n");
 
   if (argc < 2) {
-    __error("Too few CLI arguments. Need one args with hex number.");
+    eprintf("Too few CLI arguments. Need one args with hex number.");
   }
 
   unsigned short box = passBox(argv);

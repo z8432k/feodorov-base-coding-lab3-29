@@ -5,26 +5,23 @@
 
 #define BIN_STR_DIGITS 16
 
-static char* boxToBinString(const unsigned short box) {
+static char* boxToBinString(unsigned short box) {
   char *binStr = (char *) calloc((BIN_STR_DIGITS + 1), sizeof(char));
+  char *binStrStart = binStr;
 
-  unsigned short n = box;
-
-  short i = BIN_STR_DIGITS - 1;
   binStr += BIN_STR_DIGITS;
 
-  while (i >= 0 && n) {
+  while (binStr >= binStrStart && box) {
     binStr--;
 
-    if (n & 1) {
+    if (box & 1) {
       *binStr = '1';
     }
     else {
       *binStr = '0';
     }
 
-    n >>= 1;
-    i--;
+    box >>= 1;
   }
 
   return binStr;

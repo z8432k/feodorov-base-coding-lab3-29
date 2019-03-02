@@ -2,7 +2,7 @@
 
 ## Программирование поразрядных операций
 
-### Вариант 19
+### Вариант 29
 
 ![task](assets/task.png)
 
@@ -20,25 +20,25 @@ make
 ### Упаковка данных
 
 ```text
-$ ./bin/pack 3 3 4095
+$ ./bin/pack 27 1 255
 Pack.
 
-Channel number  :3
-Signal form     :3
-Division ratio  :4095
+Task ident      :27
+Activity flag   :1
+Segment length  :255
 
-Encoded data    :FFFF
+Encoded data    :DAFF
 ```
 
 ### Распаковка данных
 
 ```text
-./bin/unpack FFFF
+./bin/unpack DAFF
 Unpack.
 
-Encoded data    :FFFF
+Encoded data    :DAFF
 
-Channel number  :3
-Signal form     :3
-Division ratio  :4095
+Task ident      :27
+Activity flag   :1
+Segment length  :255
 ```

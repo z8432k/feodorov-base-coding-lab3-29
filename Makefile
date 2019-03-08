@@ -1,7 +1,7 @@
 PACK = pack
 UNPACK = unpack
 
-CFLAGS = -m32 -Wall -g -ansi -O0
+CFLAGS = -m32 -Wextra -Wall -g -ansi -O0
 LDLIBS =
 
 default: bin/$(PACK) bin/$(UNPACK)

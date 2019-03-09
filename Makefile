@@ -1,7 +1,8 @@
+RM = rm -fv
 PACK = pack
 UNPACK = unpack
 
-CFLAGS = -m32 -Wextra -Wall -g -ansi -O0
+CFLAGS = -march=i486 -m32 -Wextra -Wall -ggdb -ansi -O0
 LDLIBS =
 
 default: bin/$(PACK) bin/$(UNPACK)
@@ -24,5 +25,6 @@ bin/$(PACK).o: src/$(PACK).c
 bin/$(UNPACK).o: src/$(UNPACK).c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
+.PHONY : clean
 clean:
-	rm -fv bin/*.o bin/$(PACK) bin/$(UNPACK)
+	$(RM) bin/*.o bin/$(PACK) bin/$(UNPACK)

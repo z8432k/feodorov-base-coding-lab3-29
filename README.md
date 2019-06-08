@@ -20,29 +20,34 @@ make
 ### Упаковка данных
 
 ```text
-$ ./bin/pack 27 1 255
+$ ./bin/pack
 Pack.
 
-Task identifier :27
-Activity flag   :1
-Segment length  :255
+Input task ident:31
+Input activity flag:1
+Input segment lengths:254
 
-Encoded data HEX  :DAFF
-Encoded data BIN  :1101101011111111
+Task identifier :31
+Activity flag :1
+Segment length :254
+
+Encoded data HEX :fafe
+Encoded data BIN :1111101011111110
 
 ```
 
 ### Распаковка данных
 
 ```text
-./bin/unpack DAFF
+./bin/unpack
 Unpack.
 
-Encoded data HEX  :DAFF
-Encoded data BIN  :1101101011111111
+Input encoded data:fafe
+Encoded data HEX :fafe
+Encoded data BIN :1111101011111110
 
-Task identifier :27
-Activity flag   :1
-Segment length  :255
+Task identifier :31
+Activity flag :1
+Segment length :254
 
 ```

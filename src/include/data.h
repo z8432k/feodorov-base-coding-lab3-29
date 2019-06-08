@@ -13,8 +13,12 @@ typedef struct Data {
 } Data_t;
 
 Data_t* newData(void);
-void fillData(Data_t *data, const char **argv);
+void inputData(Data_t *data);
 unsigned short packData(const Data_t* data);
 Data_t* unpackData(const unsigned short);
 void printData(const Data_t* data);
 void printEncodedData(const unsigned short box);
+unsigned short inputBox();
+
+template <typename T>
+static void inputValue(T *value, const char *errStr);

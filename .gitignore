@@ -53,3 +53,4 @@ dkms.conf
 
 bin/pack
 bin/unpack
+.vscode/ipch/

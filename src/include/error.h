@@ -1,1 +1,1 @@
-void eprintf(const char* msg);
+void bang(const char* msg);

@@ -1,9 +1,15 @@
-#include <stdio.h>
+#include <iostream>
+#include <limits>
+#include <cstdlib>
 #include <stdlib.h>
 #include "include/data.h"
 #include "include/error.h"
 
 #define BIN_STR_DIGITS 16
+
+using namespace std;
+
+static const char *genericInputErr = "Wrong value. Try again:";
 
 static char* boxToBinString(unsigned short box) {
   char *binStr = (char *) calloc((BIN_STR_DIGITS + 1), sizeof(char));
@@ -31,21 +37,30 @@ Data_t* newData(void) {
   return (Data_t *) malloc(sizeof(Data_t));
 }
 
-void fillData(Data_t *data, const char **argv) {
-  unsigned short taskIdent = (unsigned short) atoi(argv[1]);
-  unsigned short activityFlag = (unsigned short) atoi(argv[2]);
-  unsigned short segmentLength = (unsigned short) atoi(argv[3]);
+void inputData(Data_t *data) {
+  unsigned short taskIdent;
+  unsigned short activityFlag;
+  unsigned short segmentLength;
+
+  cout << "Input task ident:";
+  inputValue(&taskIdent, genericInputErr);
 
   if (taskIdent > 31) {
-    eprintf("Task identifier must be in [0; 31].");
+    bang("Task identifier must be in [0; 31].");
   }
+
+  cout << "Input activity flag:";
+  inputValue(&activityFlag, genericInputErr);
 
   if (activityFlag > 1) {
-    eprintf("Activity flag must be in [0; 1].");
+    bang("Activity flag must be in [0; 1].");
   }
 
+  cout << "Input segment lengths:";
+  inputValue(&segmentLength, genericInputErr);
+
   if (segmentLength > 255) {
-    eprintf("Segment length must be in [0; 255].");
+    bang("Segment length must be in [0; 255].");
   }
 
   data->taskIdent = taskIdent;
@@ -76,16 +91,40 @@ Data_t* unpackData(const unsigned short box) {
 }
 
 void printData(const Data_t* data) {
-  printf("Task identifier\t:%u\n", data->taskIdent);
-  printf("Activity flag\t:%u\n", data->activityFlag);
-  printf("Segment length\t:%u\n\n", data->segmentLength);
+  cout << "Task identifier\t:" << dec << data->taskIdent << endl;
+  cout << "Activity flag\t:" << dec << data->activityFlag << endl;
+  cout << "Segment length\t:" << dec << data->segmentLength << endl << endl;
 }
 
 void printEncodedData(const unsigned short box) {
-  printf("Encoded data HEX\t:%X\n", box);
+  cout << "Encoded data HEX\t:" << hex << box << endl;
 
   char *binStr = boxToBinString(box);
-  printf("Encoded data BIN\t:%s\n\n", binStr);
+  cout << "Encoded data BIN\t:" << binStr << endl << endl;
 
   free(binStr);
+}
+
+unsigned short inputBox() {
+  unsigned short data;
+  string inputHexStr;
+
+  cout << "Input encoded data:";
+  inputValue(&inputHexStr, genericInputErr);
+
+  data = stoul(inputHexStr, nullptr, 16);
+
+  return data;
+}
+
+template <typename T>
+static void inputValue(T *value, const char* errStr) {
+  cin >> *value;
+
+  while (!cin.good()) {
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cerr << errStr;
+    cin >> *value;
+  }
 }
